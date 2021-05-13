@@ -22,6 +22,10 @@ p {
   margin-top: 3rem;
 }
 
+.unsplash-img {
+  margin-top: 3rem;
+}
+
 @media only screen and (min-width: 600px) {
   img {
     width: 30rem;

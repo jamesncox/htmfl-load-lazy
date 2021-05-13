@@ -81,6 +81,7 @@ export default function App() {
         photos.map((photo) => (
           <div key={photo.id}>
             <img
+              className="unsplash-img"
               src={photo.urls.regular}
               alt={photo.alt_description}
               loading="lazy"
