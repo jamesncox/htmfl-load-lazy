@@ -22,19 +22,40 @@ function shuffle(array) {
   return array;
 }
 
+const ACCESS_KEY = process.env.REACT_APP_ACCESS_KEY;
+
 export default function App() {
   const [memes, setMemes] = useState([]);
-  const BASE_URL = "https://api.imgflip.com/get_memes";
+  const [photos, setPhotos] = useState([]);
+  const MEME_URL = "https://api.imgflip.com/get_memes";
+  const UNSPLASH_URL = `https://api.unsplash.com/photos/?client_id=${ACCESS_KEY}`;
 
   const getMemes = () => {
     return async () => {
       try {
-        const res = await fetch(BASE_URL);
+        const res = await fetch(MEME_URL);
         if (!res.ok) {
           throw res;
         }
         const memeData = await res.json();
         setMemes(memeData.data.memes);
+        setPhotos([]);
+      } catch (err) {
+        alert("Failed to load memes");
+      }
+    };
+  };
+
+  const getPhotos = () => {
+    return async () => {
+      try {
+        const res = await fetch(UNSPLASH_URL);
+        if (!res.ok) {
+          throw res;
+        }
+        const photoData = await res.json();
+        setPhotos(photoData);
+        setMemes([]);
       } catch (err) {
         alert("Failed to load memes");
       }
@@ -42,16 +63,28 @@ export default function App() {
   };
 
   const shuffledMemes = shuffle(memes);
+  const shuffledPhotos = shuffle(photos);
 
   return (
     <div className="App">
       <h1>HTML Lazy Loading</h1>
       <button onClick={getMemes()}>Get Memes</button>
+      <button onClick={getPhotos()}>Get Photos</button>
       {memes.length > 0 &&
         shuffledMemes.map((meme) => (
           <div key={meme.id}>
             <p>{meme.name}</p>
             <img src={meme.url} alt={meme.name} loading="lazy" />
+          </div>
+        ))}
+      {shuffledPhotos.length > 0 &&
+        photos.map((photo) => (
+          <div key={photo.id}>
+            <img
+              src={photo.urls.regular}
+              alt={photo.alt_description}
+              loading="lazy"
+            />
           </div>
         ))}
     </div>
