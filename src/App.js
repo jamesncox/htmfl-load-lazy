@@ -7,13 +7,10 @@ function shuffle(array) {
     temporaryValue,
     randomIndex;
 
-  // While there remain elements to shuffle...
   while (0 !== currentIndex) {
-    // Pick a remaining element...
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex -= 1;
 
-    // And swap it with the current element.
     temporaryValue = array[currentIndex];
     array[currentIndex] = array[randomIndex];
     array[randomIndex] = temporaryValue;
@@ -68,8 +65,10 @@ export default function App() {
   return (
     <div className="App">
       <h1>HTML Lazy Loading</h1>
-      <button onClick={getMemes()}>Get Memes</button>
-      <button onClick={getPhotos()}>Get Photos</button>
+      <div className="btn-wrapper">
+        <button onClick={getMemes()}>Get Memes</button>
+        <button onClick={getPhotos()}>Get Photos</button>
+      </div>
       {memes.length > 0 &&
         shuffledMemes.map((meme) => (
           <div key={meme.id}>
