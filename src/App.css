@@ -28,7 +28,7 @@ button {
   border: 1px solid black;
   font-size: 1.5rem;
   border-radius: 0.5rem;
-  width: rem;
+  width: 11rem;
   padding: 0.25rem;
   margin: 0.5rem;
   cursor: pointer;
@@ -40,7 +40,7 @@ button:hover {
   border: 1px solid white;
   font-size: 1.5rem;
   border-radius: 0.5rem;
-  width: rem;
+  width: 11rem;
   padding: 0.25rem;
   margin: 0.5rem;
   cursor: pointer;

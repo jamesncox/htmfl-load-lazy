@@ -59,15 +59,21 @@ export default function App() {
     };
   };
 
+  const clearPhotos = () => {
+    setMemes([]);
+    setPhotos([]);
+  };
+
   const shuffledMemes = shuffle(memes);
   const shuffledPhotos = shuffle(photos);
 
   return (
     <div className="App">
-      <h1>HTML Lazy Loading</h1>
+      <h1>HTML LAZY LOADING</h1>
       <div className="btn-wrapper">
         <button onClick={getMemes()}>Get Memes</button>
         <button onClick={getPhotos()}>Get Photos</button>
+        <button onClick={clearPhotos}>Clear Photos</button>
       </div>
       {memes.length > 0 &&
         shuffledMemes.map((meme) => (
