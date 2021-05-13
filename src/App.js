@@ -3,7 +3,7 @@ import "./App.css";
 import { useState } from "react";
 
 function shuffle(array) {
-  var currentIndex = array.length,
+  let currentIndex = array.length,
     temporaryValue,
     randomIndex;
 
