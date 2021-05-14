@@ -51,6 +51,7 @@ export default function App() {
           throw res;
         }
         const photoData = await res.json();
+        console.log(photoData);
         setPhotos(photoData);
         setMemes([]);
       } catch (err) {
@@ -84,13 +85,28 @@ export default function App() {
         ))}
       {shuffledPhotos.length > 0 &&
         photos.map((photo) => (
-          <div key={photo.id}>
-            <img
-              className="unsplash-img"
-              src={photo.urls.regular}
-              alt={photo.alt_description}
-              loading="lazy"
-            />
+          <div key={photo.id} className="display-wrapper">
+            {photo.alt_description && (
+              <p>
+                {photo.alt_description.charAt(0).toUpperCase() +
+                  photo.alt_description.slice(1)}
+              </p>
+            )}
+            {photo.user.username && (
+              <p style={{ marginTop: "0" }}>By: {photo.user.username}</p>
+            )}
+            <a
+              href={photo.links.html}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                className="unsplash-img"
+                src={photo.urls.regular}
+                alt={photo.alt_description}
+                loading="lazy"
+              />
+            </a>
           </div>
         ))}
     </div>
