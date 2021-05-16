@@ -16,10 +16,10 @@ body {
 img {
   width: 80%;
   border-radius: 1rem;
+  margin-bottom: 3rem;
 }
 
 p {
-  margin-top: 3rem;
   width: 80%;
   text-align: center;
 }
@@ -58,6 +58,7 @@ button:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 3rem;
 }
 
 .display-wrapper {
